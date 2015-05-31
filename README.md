@@ -27,6 +27,9 @@ Add item. You have to pass a unique hash and the value.
 
     myCache.set(hash, value);
 
+    // alias of set
+    myCache.add(hash, value);
+
 
 
 Check if an item exists
@@ -47,3 +50,25 @@ Remove an item
 
 
     myCache.remove(hash);
+
+
+
+Get all hashes
+
+    var hashMap = myCache.getHashMap();
+
+
+
+## Events
+
+
+the cache emits events when an item is added or one is removed
+
+    myCache.on('add', function(hash, value) {
+
+    });
+
+
+    myCache.on('remove', function(hash, value) {
+
+    });

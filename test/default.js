@@ -19,6 +19,7 @@
 			});
 		});
 
+
 		it('should store items correctly', function() {
 			cache.set('a', 1);
 			assert(cache.has('a'));
@@ -51,6 +52,7 @@
 			}, 210);			
 		});
 
+
 		it('should remove overflow items', function() {
 			cache.set('1', 3);
 			cache.set('2', 3);
@@ -60,6 +62,11 @@
 			cache.set('6', 3);
 
 			assert.equal(cache.length, 5);
+		});
+
+
+		it('all hashes should be listed', function() {
+			assert.deepEqual(cache.getHashMap(), ['2', '3', '4', '5', '6']);
 		});
 
 
