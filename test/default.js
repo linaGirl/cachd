@@ -51,10 +51,6 @@
 			}, 210);			
 		});
 
-
-
-
-
 		it('should remove overflow items', function() {
 			cache.set('1', 3);
 			cache.set('2', 3);
@@ -64,6 +60,28 @@
 			cache.set('6', 3);
 
 			assert.equal(cache.length, 5);
+		});
+
+
+		it('should fire the add event', function(done) {
+			cache.on('add', function(hash, value) {
+				assert.equal(hash, 'evt');
+				assert.equal(value, 3);
+				done();
+			});
+
+			cache.set('evt', 3);		
+		});
+
+
+		it('should fire the remove event', function(done) {
+			cache.on('remove', function(hash, value) {
+				assert.equal(hash, 'evt');
+				assert.equal(value, 3);
+				done();
+			});
+
+			cache.remove('evt', 3);		
 		});
 	});
 	
