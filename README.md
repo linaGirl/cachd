@@ -8,6 +8,12 @@ A fast TTL Cache implementation
 [![node](https://img.shields.io/node/v/cachd.svg?style=flat-square)](https://nodejs.org/)
 
 
+This implementation tries to stop caching stuff if the memory is getting too full. 
+By default it expects the maxmim of available memory to be 1.6 GB and the the amount it
+tries to hold free is 200 mb. You may configure both values using the maxMemory and
+the minFreeMemory options. Both values are in mb.
+
+
 ## API
 
 Create cache instance
