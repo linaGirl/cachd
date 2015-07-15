@@ -2,6 +2,8 @@
 
 A fast TTL Cache
 
+for node. 0.12+, io.js
+
 
 [![npm](https://img.shields.io/npm/dm/cachd.svg?style=flat-square)](https://www.npmjs.com/package/cachd)
 [![Travis](https://img.shields.io/travis/eventEmitter/cachd.svg?style=flat-square)](https://travis-ci.org/eventEmitter/cachd)
