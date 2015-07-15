@@ -1,17 +1,19 @@
 # Cachd
 
-A fast TTL Cache implementation
+A fast TTL Cache
 
 
 [![npm](https://img.shields.io/npm/dm/cachd.svg?style=flat-square)](https://www.npmjs.com/package/cachd)
 [![Travis](https://img.shields.io/travis/eventEmitter/cachd.svg?style=flat-square)](https://travis-ci.org/eventEmitter/cachd)
 [![node](https://img.shields.io/node/v/cachd.svg?style=flat-square)](https://nodejs.org/)
 
+About the memory mangement:
 
-This implementation tries to stop caching stuff if the memory is getting too full. 
-By default it expects the maxmim of available memory to be 1.6 GB and the the amount it
-tries to hold free is 200 mb. You may configure both values using the maxMemory and
-the minFreeMemory options. Both values are in mb.
+The cache stops caching more items if the memory is getting full. It accepts
+new items but removes the oldest ones before the ttl or max size is reached.
+It expects the maximum of available memory for the node.js process to be 1.6 GB.
+It stops caching items when only 200mb of memory are left for the process. You
+may override the thresholds using the maxMemory and minFreeMemory options.
 
 
 ## API
@@ -22,8 +24,13 @@ Create cache instance
 
 
     var myCache = new Cachd({
-          ttl: 3600000 // max age of items in msec
-        , maxLength: 1000 // the maximum of items to store
+          ttl: 3600000                  // max age of items in msec (default: 3600000 -> 1h)
+        , maxLength: 1000               // the maximum of items to store (default: 10000)
+        , maxMemory: 3000               // the maximum of memory the node.js process can use (default: 1600mb)
+        , minFreeMemory: 500            // start removing old items from the cache if the free
+                                        // memory is less than 500mb (default: 200mb)
+        , removalStrategy: 'leastUsed'  // remove the least used items if the cache is getting
+                                        // too full (default: oldest)
     });
 
 
@@ -52,7 +59,7 @@ Get an item
     var item = myCache.get(hash);
 
 
-Remove an item 
+Remove an item
 
 
     myCache.remove(hash);

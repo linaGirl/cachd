@@ -1,5 +1,5 @@
 
-	
+
 	var   Class 		= require('ee-class')
 		, log 			= require('ee-log')
 		, assert 		= require('assert');
@@ -49,7 +49,7 @@
 				cache.remove('d');
 
 				done();
-			}, 210);			
+			}, 210);
 		});
 
 
@@ -66,7 +66,11 @@
 
 
 		it('all hashes should be listed', function() {
-			assert.deepEqual(cache.getHashMap(), ['2', '3', '4', '5', '6']);
+			var list = [];
+
+			for (var key of cache.keys()) list.push(key);
+
+			assert.deepEqual(list, ['2', '3', '4', '5', '6']);
 		});
 
 
@@ -77,7 +81,7 @@
 				done();
 			});
 
-			cache.set('evt', 3);		
+			cache.set('evt', 3);
 		});
 
 
@@ -88,7 +92,35 @@
 				done();
 			});
 
-			cache.remove('evt', 3);		
+			cache.remove('evt', 3);
+		});
+
+
+
+		it('should be able to remove the least used nodes first', function() {
+			var  list = []
+				, c;
+
+			c = new TTLCache({
+				  ttl: 20000
+				, maxLength: 3
+				, removalStrategy: 'leastUsed'
+			});
+			
+
+			c.set(1, 'a');
+			c.set(2, 'b');
+			c.set(3, 'c');
+
+			c.get(1);
+			c.get(1);
+
+			c.set(4, 'd');
+			c.set(5, 'e');
+
+
+			for (var val of c) list.push(val);
+
+			assert.deepEqual(list, ['a', 'e', 'd']);
 		});
 	});
-	

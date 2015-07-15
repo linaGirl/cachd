@@ -1,7 +1,7 @@
 {
       "name"                        : "cachd"
     , "description"                 : "A fast TTL Cache implementation"
-    , "version"                     : "0.2.1"
+    , "version"                     : "0.3.0"
     , "homepage"                    : "https://github.com/eventEmitter/cachd"
     , "author"                      : "Michael van der Weg <michael@joinbox.com> (http://joinbox.com/)"
     , "license"                     : "MIT"
@@ -18,8 +18,9 @@
     , "dependencies": {
           "ee-class"                : "1.x.x"
         , "ee-log"                  : "0.3.x"
-        , "ee-event-emitter"        : "0.2.x"
+        , "ee-event-emitter"        : "0.3.x"
         , "ee-argv"                 : "^0.1.4"
+        , "linkd"                   : "0.3.x"
     }
     , "devDependencies": {
           "mocha"                   : "1.17.x"
