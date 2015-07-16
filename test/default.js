@@ -106,7 +106,7 @@
 				, maxLength: 3
 				, removalStrategy: 'leastUsed'
 			});
-			
+
 
 			c.set(1, 'a');
 			c.set(2, 'b');
@@ -122,5 +122,27 @@
 			for (var val of c) list.push(val);
 
 			assert.deepEqual(list, ['a', 'e', 'd']);
+		});
+
+
+
+		it('should return the first and the last node correctly', function() {
+			var  list;
+
+			list = new TTLCache({
+				  ttl: 20000
+				, maxLength: 3
+				, removalStrategy: 'leastUsed'
+			});
+
+			list.set(1, 'a');
+			list.set(2, 'b');
+			list.set(3, 'c');
+
+			list.get(1);
+			list.get(1);
+
+			assert(list.getLast(), 'b');
+			assert(list.getFirst(), 'a');
 		});
 	});

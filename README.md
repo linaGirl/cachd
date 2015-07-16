@@ -73,6 +73,17 @@ Get all hashes
     var hashMap = myCache.getHashMap();
 
 
+Get first cached item. This is the most accessed item if the cache has the
+«leastUsed» removal strategy, else its the most recent added item.
+
+    var item = mycache.getFirst();
+
+
+Get last cached item. This is the least accessed item if the cache has the
+«leastUsed» removal strategy, else its the least recent added item.
+
+    var item = mycache.getFirst();
+
 
 ## Events
 
