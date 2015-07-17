@@ -1,7 +1,7 @@
 {
       "name"                        : "cachd"
     , "description"                 : "A fast TTL Cache implementation"
-    , "version"                     : "0.3.4"
+    , "version"                     : "0.3.5"
     , "homepage"                    : "https://github.com/eventEmitter/cachd"
     , "author"                      : "Michael van der Weg <michael@joinbox.com> (http://joinbox.com/)"
     , "license"                     : "MIT"
