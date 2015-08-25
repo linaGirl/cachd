@@ -99,6 +99,7 @@
 
 		it('should be able to remove the least used nodes first', function() {
 			var  list = []
+				, keys = []
 				, c;
 
 			c = new TTLCache({
@@ -120,8 +121,10 @@
 
 
 			for (var val of c) list.push(val);
+			for (var key of c.keys) keys.push(key);
 
 			assert.deepEqual(list, ['a', 'e', 'd']);
+			assert.deepEqual(keys, [1, 5, 4]);
 		});
 
 
