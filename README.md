@@ -2,7 +2,7 @@
 
 A fast TTL Cache
 
-for node. 0.12+, io.js
+for node >= 4.2
 
 
 [![npm](https://img.shields.io/npm/dm/cachd.svg?style=flat-square)](https://www.npmjs.com/package/cachd)
@@ -11,11 +11,8 @@ for node. 0.12+, io.js
 
 About the memory mangement:
 
-The cache stops caching more items if the memory is getting full. It accepts
+The cache stops caching more items if the memory is getting full (> 70% of the heap used). It accepts
 new items but removes the oldest ones before the ttl or max size is reached.
-It expects the maximum of available memory for the node.js process to be 1.6 GB.
-It stops caching items when only 200mb of memory are left for the process. You
-may override the thresholds using the maxMemory and minFreeMemory options.
 
 
 ## API
@@ -28,9 +25,6 @@ Create cache instance
     var myCache = new Cachd({
           ttl: 3600000                  // max age of items in msec (default: 3600000 -> 1h)
         , maxLength: 1000               // the maximum of items to store (default: 10000)
-        , maxMemory: 3000               // the maximum of memory the node.js process can use (default: 1600mb)
-        , minFreeMemory: 500            // start removing old items from the cache if the free
-                                        // memory is less than 500mb (default: 200mb)
         , removalStrategy: 'leastUsed'  // remove the least used items if the cache is getting
                                         // too full (default: oldest)
     });
