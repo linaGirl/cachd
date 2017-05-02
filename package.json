@@ -17,9 +17,9 @@
     }
     , "dependencies": {
           "ee-class"                : "1.x"
-        , "ee-log"                  : "1.x"
-        , "ee-event-emitter"        : "0.3.x"
-        , "linkd"                   : "2.x"
+        , "ee-log"                  : "^2.0.2"
+        , "ee-event-emitter"        : "~1.0.1"
+        , "linkd"                   : "^3.0.0"
         , "memory-manager"          : "0.1.x"
     }
     , "devDependencies": {
