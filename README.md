@@ -1,5 +1,7 @@
 # Cachd
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/eventEmitter/cachd.svg)](https://greenkeeper.io/)
+
 A fast TTL Cache
 
 for node >= 4.2
